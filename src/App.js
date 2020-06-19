@@ -7,7 +7,15 @@ function App() {
   const [repositories, setRepositories] = useState([]);
 
   async function handleAddRepository() {
-    // TODO
+    const { data } = await api.post('repositories', {
+      title: 'gostack-conceitos-reactjs',
+      url: 'https://github.com/derikoliveira/gostack-conceitos-reactjs',
+      techs: ['ReactJS', 'Babel', 'Webpack'],
+    });
+
+    const addedRepository = data;
+
+    setRepositories([...repositories, addedRepository]);
   }
 
   async function handleRemoveRepository(id) {
